@@ -55,7 +55,7 @@ def classify(tweets):
 
 stop_words = set(stopwords.words('english'))
 
-def get_frequent_words(words_str, top=50):
+def get_frequent_words(words_str, top=150):
 	tokens = word_tokenize(words_str.lower())
 	#tokenList = [token for token in tokenList if re.match('^([a-zA-Z]+|\d+|\W)$', token)]
 	filtered_sentence = [w for w in tokens if not w in list(stop_words)+list(string.punctuation)+list('”“’') and  re.match('^([a-zA-Z]+|\d+|\W)$', w)]

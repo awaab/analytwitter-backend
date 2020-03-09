@@ -8,9 +8,11 @@ from . import classifier
 
 # Create your views here.
 def tweet_search_view(request):
-	request_data = json.loads(request.body)
-	search_term =  request_data['search_term']
-	top_tweets = request_data['top_tweets']
+	#request_data = json.loads(request.body)
+	#search_term =  request_data['search_term']
+	#top_tweets = request_data['top_tweets']
+	top_tweets = bool(request.GET.get('top_tweets', 1))
+	search_term = request.GET.get('search_term', 'default')
 	tweets = scraper.get_tweets(search_term,top=top_tweets)
 	results = classifier.classify(tweets)
 	pos_percentage = results['pos_percentage']

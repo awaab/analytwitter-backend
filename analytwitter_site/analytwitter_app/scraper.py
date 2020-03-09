@@ -2,7 +2,7 @@ import GetOldTweets3 as got
 from datetime import date
 
 # Searches for tweets until today
-def get_tweets(search_term,top=True,tweet_num=150):
+def get_tweets(search_term,top=True,tweet_num=20):
 	today = date.today().strftime("%Y-%m-%d")
 	tweetCriteria = got.manager.TweetCriteria().setQuerySearch(search_term)\
 	.setUntil(today)\
