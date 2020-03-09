@@ -1,1 +1,1 @@
-web: gunicorn analytwitter_site_project.wsgi --log-file -
+web: gunicorn analytwitter_site.wsgi --log-file -
