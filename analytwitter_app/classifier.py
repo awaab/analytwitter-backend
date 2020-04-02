@@ -11,6 +11,7 @@ import os.path
 import numpy as np
 import string
 import re
+from textblob import TextBlob
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 
@@ -41,11 +42,14 @@ def classify(tweets):
 	with graph.as_default():
 		set_session(sess)
 		for tweet in tweets:
-			pred = predict([tweet.text])[0][0]
+			text = tweet.text
+			blob = TextBlob(text)
+			subjectivity=blob.sentiment.subjectivity
+			pred = predict([text])[0][0]
 			if pred > 0.5:
-				pos+=1
+				pos+=subjectivity
 			elif pred<=0.5:
-				neg+=1
+				neg+=subjectivity
 			all_tweets_str += ' ' + tweet.text
 			#print('\n\n',tweet.text,pred)
 	frequent_words = get_frequent_words(all_tweets_str)
