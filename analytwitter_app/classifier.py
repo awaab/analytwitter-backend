@@ -22,8 +22,8 @@ sess = tf.Session(config=tf_config)
 set_session(sess)
 
 graph = tf.get_default_graph()
-model = load_model(os.path.join(BASE, "ml_models/twit_sent_model.h5"))
-with open(os.path.join(BASE, "ml_models/tokenizer.pickle"), 'rb') as handle:
+model = load_model(os.path.join(BASE, "ml_models/twit_sent_model_3.h5"))
+with open(os.path.join(BASE, "ml_models/tokenizer_2.pickle"), 'rb') as handle:
     tokenizer = pickle.load(handle)
 
 max_tokens =  model.layers[0].input_shape[1]
